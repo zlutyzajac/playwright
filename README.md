@@ -1,8 +1,10 @@
 # Playwright
 Seznam úkolu:
-- Seznámení se s knihovnou [Playwright](https://playwright.dev) k end to end testování
+- Požádání o přistup do tohoto repa
+- Seznámení se s knihovnou [Playwright](https://playwright.dev) pro end to end testování
 - Nainicializování základní konfigurace a závislostí pro spouštění prvních testů pomocí [dokumentace](https://playwright.dev/docs/intro)
 - Vytvoření souboru či více, které budou obsahovat testy, pokrývající následující testové scénáře
+- Push veškerých vytvořených souborů
 
 Testové scénáře:
 - Příchod na Hlavní stránku a vyhledání výrazu `Kazma`, kontrola přesměrování a existence neprázdných výsledků (Nejlepší výsledek, Pořady, Videa)
