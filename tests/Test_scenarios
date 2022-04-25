@@ -1,0 +1,121 @@
+Search on main page - non-existing, existing value
+--------------------------------------------------
+Test data:
+URL = 'https://www.stream.cz'
+NON_EXISTING_VALUE_FIRST = 'abcdsuperbullshit42'
+NON_EXISTING_VALUE_SECOND = '@@@test@☼↑6'
+EMPTY_RESULT_MESSAGE = 'Bohužel jsme nic nenašli.'
+EXISTING_VALUE = 'Kazma'
+
+Test prerequisities: Uzivatel neprihlasen, anonymni okno prohlizece
+
+Test steps:
+1. Uzivatel je na strance: URL
+2. Do pole pro vyhledavani zadat: NON_EXISTING_VALUE_FIRST
+3. Kliknout na button: 'Vyhledat'
+4. Pod hlavnim menu zobrazen message: EMPTY_RESULT_MESSAGE
+5. Kliknout na button: 'Smazat'
+6. Do pole pro vyhledavani zadat: NON_EXISTING_VALUE_SECOND
+7. Kliknout na button: 'Vyhledat'
+8. Pod hlavnim menu zobrazen message: EMPTY_RESULT_MESSAGE
+9. Kliknout na button: 'Smazat'
+10. Do pole pro vyhledavani zadat: EXISTING_VALUE
+11. Pod hlavnim menu zobrazeny sekce: 'Nejlepší výsledek', 'Pořady', 'Videa'
+12. Uzivatel je na strance: 'https://www.stream.cz/hledani?dotaz=EXISTING_VALUE'
+
+
+Search on first page - existing value, next episodes loading
+------------------------------------------------------------
+Test data:
+URL = 'https://www.stream.cz/videa/zabava'
+EXISTING_VALUE = Hodnota vracejici nenulovy vysledek
+X = Pocet videi odpovidajicich hledani existing value
+
+Test prerequisities: Uzivatel neprihlasen, anonymni okno prohlizece
+
+Test steps:
+1. Uzivatel je na strance: URL
+2. Do pole pro vyhledavani zadat: EXISTING_VALUE
+3. Kliknout na button: 'Vyhledat'
+4. Pod hlavnim menu zobrazeny sekce: 'Nejlepší výsledek', 'Pořady', 'Videa'
+5. Uzivatel je na strance: 'https://www.stream.cz/hledani?dotaz=EXISTING_VALUE'
+6. V sekci videa zobrazeny videa odpovidajici hledani: EXISTING_VALUE (0 - 100)
+7. Scrollovat na spodni cast stranky
+8. Kliknout na button: 'Načíst další videa'
+9. Kontrola nacteni dalsich videi odpovidajicich zadani: X
+
+
+Search on empty page - message, search existing value
+-----------------------------------------------------
+Test data:
+URL = 'https://www.stream.cz/hledani';
+FILL_SEARCH_INPUT_MESSAGE = 'Zadejte, co chcete hledat';
+EXISTING_VALUE = 'Kazma';
+
+Test prerequisities: Uzivatel neprihlasen, anonymni okno prohlizece
+
+Test steps:
+1. Uzivatel je na strance: URL
+2. Pod hlavnim menu zobrazen message: FILL_SEARCH_INPUT_MESSAGE
+3. Do pole pro vyhledavani zadat: EXISTING_VALUE
+4. Kliknout na button: 'Vyhledat'
+5. Pod hlavnim menu zobrazeny sekce: 'Nejlepší výsledek', 'Pořady', 'Videa'
+6. Uzivatel je na strance: 'https://www.stream.cz/hledani?dotaz=EXISTING_VALUE'
+
+
+Filter searched episodes - negative, positive action
+----------------------------------------------------
+Test data:
+URL = 'https://www.stream.cz'
+EXISTING_VALUE = 'Kazma'
+EMPTY_FILTER_MESSAGE = 'Zadaným filtrům neodpovídá žádný výsledek.'
+X = Pocet videi odpovidajicich filtrovani
+
+Test prerequisities: Uzivatel neprihlasen, anonymni okno prohlizece
+
+Test steps:
+1. Uzivatel je na strance: URL
+2. Do pole pro vyhledavani zadat: EXISTING_VALUE
+3. Kliknout na button: 'Vyhledat'
+4. Pod hlavnim menu zobrazeny sekce: 'Nejlepší výsledek', 'Pořady', 'Videa'
+5. Uzivatel je na strance: 'https://www.stream.cz/hledani?dotaz=EXISTING_VALUE'
+6. Kliknout na button: Filtry
+7. Je zobrazena sekce pro filtrovani videi
+8. V sekci pro filtrovani kliknout na tlacitko:
+- 'Datum: Dnes'
+- 'Stopáž: Krátké'
+- 'Řazení: Nejnovější'
+9. Po kliknuti je za tlacitkem zobrazen znak 'checked'
+10. Je zobrazen message: EMPTY_FILTER_MESSAGE
+
+11. Uzivatel je na strance: URL
+12. Do pole pro vyhledavani zadat: EXISTING_VALUE
+13. Kliknout na button: 'Vyhledat'
+14. Pod hlavnim menu zobrazeny sekce: Nejlepší výsledek, Pořady, Videa
+15. Uzivatel je na strance: 'https://www.stream.cz/hledani?dotaz=EXISTING_VALUE'
+16. Kliknout na button: Filtry
+17. Je zobrazena sekce s fitry
+18. V sekci pro filtrovani kliknout na tlacitko:
+- 'Řazení: Nejsledovanější'
+19. Po kliknuti je za tlacitkem zobrazen znak 'checked'
+20. Pod sekci s filtry jsou zobrazeny videa: X
+
+
+Ribbon features check - SideMenu, Logo, Seznam link
+---------------------------------------------------
+Test data:
+URL = 'https://www.stream.cz/hledani'
+
+Test prerequisities: Uzivatel neprihlasen, anonymni okno prohlizece
+
+Test steps:
+1. Uzivatel je na strance: URL
+2. Kliknout na button: 'Hamburger'
+3. Je zobrazeno Side Menu
+4. Kliknout na link: 'Side Menu: Stream originals'
+5. Uzivatel je na strance: 'https://www.stream.cz/sluzba/stream'
+6. Kliknout na logo: 'Stream'
+7. Uzivatel je na strance: 'https://www.stream.cz/'
+8. Kliknout na link: 'Seznam.cz'
+9. Uzivatel je v novem tabu, na strance: 'https://www.seznam.cz/'
+10. Zavrit novy tab a navrat do puvodniho tabu, na stranku: 'https://www.stream.cz/'
